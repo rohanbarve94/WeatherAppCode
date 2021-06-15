@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="WeatherActivityViewModel"
+            type="com.example.weatherappcode.presentation.weatherdetails.WeatherActivityViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:navigationIcon="@drawable/back_arrow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_favorite"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/add_to_favorite"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/progress_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F5F6F7"
+            android:visibility="gone"
+            android:gravity="center_horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center_vertical"
+                android:background="#F5F6F7"
+                android:indeterminate="true"
+                android:indeterminateDrawable="@drawable/rotate_progress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E85959"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/something_went_wrong"
+                android:textColor="#FFFFFF"
+                android:textSize="54sp" />
+
+            <Button
+                android:id="@+id/retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="44dp"
+                android:background="#4A4A4A"
+                android:text="@string/retry"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="24dp"
+                android:paddingBottom="48dp">
+
+                <TextView
+                    android:id="@+id/current_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_thin"
+                    android:text="@{WeatherActivityViewModel.currentDate}"
+                    android:textColor="#2A2A2A"
+                    android:textSize="24sp"
+                    tools:text="12 June , 2021 11:42" />
+
+                <TextView
+                    android:id="@+id/current_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_thin"
+                    android:text="@{WeatherActivityViewModel.currentCity}"
+                    android:textColor="#2A2A2A"
+                    android:textSize="24sp"
+                    tools:text="Bengaluru" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@{WeatherActivityViewModel.currentTemp}"
+                        android:textColor="#2A2A2A"
+                        android:textSize="36sp"
+                        tools:text="36" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/weather_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_thin"
+                        android:gravity="center_horizontal"
+                        android:text="@{WeatherActivityViewModel.description}"
+                        android:textColor="#2A2A2A"
+                        android:textSize="24sp"
+                        tools:text="Sunny" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/future_forecast_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center_horizontal"
+                        android:text="@string/future_forcast"
+                        android:textColor="@color/purple_700"
+                        android:textSize="16sp"
+                        android:layout_marginStart="16dp"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/day_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@{WeatherActivityViewModel.dateTimeOne}"
+                                android:textColor="#2A2A2A"
+                                android:textSize="18sp"
+                                tools:text="Tommorow" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_thin"
+                                android:text="@{WeatherActivityViewModel.descriptionOne}"
+                                android:textColor="#2A2A2A"
+                                android:textSize="18sp"
+                                tools:text="Sunny" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{WeatherActivityViewModel.tempOne}"
+                            android:textColor="#2A2A2A"
+                            android:textSize="24sp"
+                            tools:text="30" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/day_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@{WeatherActivityViewModel.dateTimeTwo}"
+                                android:textColor="#2A2A2A"
+                                android:textSize="18sp"
+                                tools:text="Tommorow" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_thin"
+                                android:text="@{WeatherActivityViewModel.descriptionTwo}"
+                                android:textColor="#2A2A2A"
+                                android:textSize="18sp"
+                                tools:text="Sunny" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{WeatherActivityViewModel.tempTwo}"
+                            android:textColor="#2A2A2A"
+                            android:textSize="24sp"
+                            tools:text="30" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/day_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="@{WeatherActivityViewModel.dateTimeThree}"
+                                android:textColor="#2A2A2A"
+                                android:textSize="18sp"
+                                tools:text="Tommorow" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_thin"
+                                android:text="@{WeatherActivityViewModel.descriptionThree}"
+                                android:textColor="#2A2A2A"
+                                android:textSize="18sp"
+                                tools:text="Sunny" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{WeatherActivityViewModel.tempThree}"
+                            android:textColor="#2A2A2A"
+                            android:textSize="24sp"
+                            tools:text="30" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeatherAppCode</string>
+    <string name="search_city">Search City</string>
+    <string name="check_weather">Check Weather</string>
+    <string name="retry">RETRY</string>
+    <string name="something_went_wrong">Something Went Wrong!</string>
+    <string name="internet_error_msg">Network Error!</string>
+    <string name="future_forcast">FUTURE FORCAST - </string>
+    <string name="add_to_favorite">ADD TO FAVORITE</string>
+    <string name="weather_app">Weather App</string>
+    <string name="favorite_list">FAVORITE LIST - </string>
+    <string name="error_city">City not found</string>
+</resources>
