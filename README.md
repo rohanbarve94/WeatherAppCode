@@ -2,7 +2,7 @@
 
 Demo app using openweathermap.org APIs
 
-App is designed as per Android Architecture Components guidelines (https://developer.android.com/jetpack/guide)
+App is designed as per Android Architecture Components guidelines using latest jetpack libraries (https://developer.android.com/jetpack/guide)
 
 Components Used - Kotlin, Activity , ViewModel , Repository , Room DB , Retrofit , openweatherorg API, LIVE Data, Kotlin Coroutines , Recycler View , Material Design
 
