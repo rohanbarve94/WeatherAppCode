@@ -4,7 +4,7 @@ Demo app using openweathermap.org APIs
 
 App is designed as per Android Architecture Components guidelines using latest jetpack libraries (https://developer.android.com/jetpack/guide)
 
-Components Used - Kotlin, Activity , ViewModel , Repository , Room DB , Retrofit , openweathermap.org APIs (Current Weather Data API , Hourly Forecast 4 days API), LIVE Data, Kotlin Coroutines , Recycler View , Material Design
+Components Used - Kotlin, Activity , ViewModel , Repository , Room DB , Retrofit , Data Binding , openweathermap.org APIs (Current Weather Data API , Hourly Forecast 4 days API), LIVE Data, Kotlin Coroutines , Recycler View , Material Design
 
 ![final-architecture](https://user-images.githubusercontent.com/85919804/121995034-f05ee600-cdc3-11eb-829d-158c253c5d0e.png)
 
