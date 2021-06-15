@@ -9,7 +9,7 @@ Components Used - Kotlin, Activity , ViewModel , Repository , Room DB , Retrofit
 ![final-architecture](https://user-images.githubusercontent.com/85919804/121995034-f05ee600-cdc3-11eb-829d-158c253c5d0e.png)
 
 
-App Features - Get Weather by City (Current showing only Cities of India (List downloaded from openweatherorg.api website)) , Mark any number of cities as favourite for quick lookup , Get Current weather details plus 3 forecaset within 3 hours of interval.
+App Features - Get Weather by City (Current showing only Cities of India (List downloaded from openweathermap.org api website)) , Mark any number of cities as favourite for quick lookup , Get Current weather details plus 3 forecaset within 3 hours of interval.
 
 App Screenshots - 
 
